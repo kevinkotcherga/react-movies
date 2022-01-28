@@ -80,7 +80,7 @@ const MyCard = ({ movie }) => {
   return (
     <div>
       <Card
-            style={{ width: 300, margin: 20}}
+            className='card'
             cover={
               <img
                 alt="example"
@@ -94,19 +94,21 @@ const MyCard = ({ movie }) => {
               <HeartFilled />
             ]}
           >
-            <p>
+            <div>
               {movie.release_date ? (
               <h5>Sorti le : {dateFormater(movie.release_date)}</h5>
               ) : ""}
               <h4>{movie.vote_average}/10<span>⭐</span></h4>
 
               <ul>{genreFinder()}</ul>
-            </p>
+              {movie.overview ? <h3>Synopsis</h3> : ""}
+              <p>{movie.overview}</p>
+            </div>
+
             <Meta
               title={movie.title}
-              description={movie.overview ? <h3>Synopsis</h3> : ""}
             />
-            <p>{movie.overview}</p>
+
           </Card>
     </div>
   );
