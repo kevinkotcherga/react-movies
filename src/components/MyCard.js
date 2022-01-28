@@ -4,6 +4,11 @@ import { HeartFilled } from '@ant-design/icons';
 const { Meta } = Card;
 
 const MyCard = ({ movie }) => {
+  const dateFormater = (date) => {
+    let [yy, mm, dd] = date.split("-");
+    return [dd, mm, yy].join('/');
+  };
+
   return (
     <div>
       <Card
@@ -21,6 +26,12 @@ const MyCard = ({ movie }) => {
               <HeartFilled />
             ]}
           >
+            <p>
+              {movie.release_date ? (
+              <h5>Sorti le : {dateFormater(movie.release_date)}</h5>
+              ) : ""}
+              <h4>{movie.vote_average}/10<span>⭐</span></h4>
+            </p>
             <Meta
               title={movie.title}
               description="This is the description"
