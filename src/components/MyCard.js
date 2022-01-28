@@ -1,27 +1,27 @@
 import React from 'react';
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { HeartFilled } from '@ant-design/icons';
 const { Meta } = Card;
 
 const MyCard = ({ movie }) => {
   return (
     <div>
       <Card
-            style={{ width: 300 }}
+            style={{ width: 300, margin: 20}}
             cover={
               <img
                 alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                src={movie.poster_path ?
+                  "https://image.tmdb.org/t/p/w500" + movie.poster_path : "./img/poster.jpg"}
+                className='img-card'
+                style={{ padding: 10 }}
               />
             }
             actions={[
-              <SettingOutlined key="setting" />,
-              <EditOutlined key="edit" />,
-              <EllipsisOutlined key="ellipsis" />,
+              <HeartFilled />
             ]}
           >
             <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
               title={movie.title}
               description="This is the description"
             />
