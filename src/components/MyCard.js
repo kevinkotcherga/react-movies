@@ -3,7 +3,7 @@ import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 
-const MyCard = () => {
+const MyCard = ({ movie }) => {
   return (
     <div>
       <Card
@@ -22,7 +22,7 @@ const MyCard = () => {
           >
             <Meta
               avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
+              title={movie.title}
               description="This is the description"
             />
           </Card>
