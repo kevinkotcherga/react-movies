@@ -6,7 +6,7 @@ import Card from './Card';
 const Form = () => {
   const [moviesData, setMoviesData] = useState([]);
   const [search, setSearch] = useState("code");
-  const [sortGoodBad, setSortGoodBad] = useState("badToGood");
+  const [sortGoodBad, setSortGoodBad] = useState(null);
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=89360935952806bb62e1575a82c32b69&query=${search}&language=fr-FR`).then((res) => setMoviesData(res.data.results));
@@ -20,8 +20,8 @@ const Form = () => {
           <input type="submit" value="Rechercher" />
         </form>
         <div className="btn-sort-container">
-            <div className="btn-sort" id="goodToBad">Top<span>→</span></div>
-            <div className="btn-sort" id="badToGood">Flop<span>→</span></div>
+            <div className="btn-sort" id="goodToBad" onClick={() => setSortGoodBad("goodToBad")}>Top<span>→</span></div>
+            <div className="btn-sort" id="badToGood" onClick={() => setSortGoodBad("badToGood")}>Flop<span>→</span></div>
         </div>
       </div>
       <div className="result">
