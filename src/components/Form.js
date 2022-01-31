@@ -5,7 +5,8 @@ import Card from './Card';
 
 const Form = () => {
   const [moviesData, setMoviesData] = useState([]);
-  const [search, setSearch] = useState("avengers");
+  const [search, setSearch] = useState("code");
+  const [sortGoodBad, setSortGoodBad] = useState("badToGood");
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/search/movie?api_key=89360935952806bb62e1575a82c32b69&query=${search}&language=fr-FR`).then((res) => setMoviesData(res.data.results));
@@ -24,8 +25,16 @@ const Form = () => {
         </div>
       </div>
       <div className="result">
-        {moviesData.slice(0,12)
-        .map((movie) => (
+        {moviesData
+          .slice(0,12)
+          .sort((a,b) => {
+            if (sortGoodBad === "goodToBad") {
+              return b.vote_average - a.vote_average;
+            } else if (sortGoodBad === "badToGood") {
+              return a.vote_average - b.vote_average;
+            }
+          })
+          .map((movie) => (
           <Card key={movie.id} movie={movie}/>
           ))}
       </div>
