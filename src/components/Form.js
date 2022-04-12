@@ -16,8 +16,7 @@ const Form = () => {
     <div className="form-component">
       <div className="form-container">
         <form>
-          <input type="text" placeholder="Entre le titre d'un film" id="search-input" onChange={(e) => setSearch(e.target.value)} />
-          <input type="submit" value="Rechercher" />
+          <input type="text" placeholder="Rechercher un film..." id="search-input" onChange={(e) => setSearch(e.target.value)} />
         </form>
         <div className="btn-sort-container">
             <div className="btn-sort" id="goodToBad" onClick={() => setSortGoodBad("goodToBad")}>Top<span>→</span></div>
