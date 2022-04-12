@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import { useState } from 'react';
 import Card from "../components/Card";
 import Header from "../components/Header";
 
